@@ -1,4 +1,5 @@
 \documentclass[10pt]{extbook}
+% \documentclass[10pt]{scrbook}
 
 \usepackage{fontspec}
 \setmainfont{LiberationSerif}
@@ -40,9 +41,14 @@
 \date{2024}
 
 \begin{document}
+
+\frontmatter
+
 \maketitle
 \tableofcontents
 \newpage
+
+\mainmatter
 
 \chapter{Механика}%
 
@@ -217,9 +223,9 @@
 \begin{wrapfigure}{r}{0.3\textwidth}
 	\begin{center}
 		\begin{tikzpicture}[scale=0.4]
-			\draw[->] (0, 0, 0) -- (5, 0, 0) node[below left] {$x$};
+			\draw[->] (0, 0, 0) -- (5, 0, 0) node[below left] {$y$};
 			\draw[->] (0, 0, 0) -- (0, 5, 0) node[right] {$z$};
-			\draw[->] (0, 0, 0) -- (0, 0, 5) node[below] {$y$};
+			\draw[->] (0, 0, 0) -- (0, 0, 5) node[below] {$x$};
 
 			\draw[->] (0, 0, 0) -- node[below right] {$\overline{r}_1$} (3, 3, 3) node[right] {$t_1$};
 			\draw[->] (0, 0, 0) -- node[above left] {$\overline{r}_2$} (4, 5, 3) node[right] {$t_2$};
@@ -231,7 +237,7 @@
 			\draw[dashed] (4, 0, 3) -- (0, 0, 3);
 		\end{tikzpicture}
 	\end{center}
-	% \caption{Радиус--вектор}%
+	\caption{}%
 	\label{fig:radius-vector}
 \end{wrapfigure}
 
@@ -241,13 +247,13 @@ $\Delta r$ (смотреть рисунок~\ref{fig:radius-vector}), соеди
 
 Любой вектор может быть задан проекциями на оси системы координат:
 \begin{align*}
-	\overline{r}        & = \overline{e_x}x + \overline{e_y}y + \overline{e_z}z \\
-	\overline{r}        & = \overline{r}(t)                                     \\
-	\Delta t            & = t_2 - t_1                                           \\
-	\Delta \overline{r} & = \overline{r_2} - \overline{r_1}                     \\
-	\Delta x            & = x_2 - x_1                                           \\
-	\Delta y            & = y_2 - y_1                                           \\
-	\Delta z            & = z_2 - z_1                                           \\
+	\vec{r}        & = \vec{e_x}x + \vec{e_y}y + \vec{e_z}z \\
+	\vec{r}        & = \vec{r}(t)                           \\
+	\Delta t       & = t_2 - t_1                            \\
+	\Delta \vec{r} & = \vec{r_2} - \vec{r_1}                \\
+	\Delta x       & = x_2 - x_1                            \\
+	\Delta y       & = y_2 - y_1                            \\
+	\Delta z       & = z_2 - z_1                            \\
 \end{align*}
 
 Можно использовать разложение вектора на составляющее.
@@ -363,17 +369,17 @@ $\Delta r$ (смотреть рисунок~\ref{fig:radius-vector}), соеди
 
 \emph{Угловое перемещение}, если мы будем выражать его через радиус-вектор
 
-\begin{figure}[htpb]
-	\begin{center}
-		\begin{tikzpicture}[scale=0.5]
-			\draw (0, 0) circle (4);
-			\draw (0, 0) -- node[below] {$\vec{r}$} (4, 0);
-			\draw (0, 0) -- node[left] {$\vec{r}'$} (0, 4);
-			% \draw[->] (5, 0) arc ()
-		\end{tikzpicture}
-	\end{center}
-	\caption{}%
-\end{figure}
+% \begin{figure}[htpb]
+% 	\begin{center}
+% 		\begin{tikzpicture}[scale=0.5]
+% 			\draw (0, 0) circle (4);
+% 			\draw (0, 0) -- node[below] {$\vec{r}$} (4, 0);
+% 			\draw (0, 0) -- node[left] {$\vec{r}'$} (0, 4);
+% 			% \draw[->] (5, 0) arc ()
+% 		\end{tikzpicture}
+% 	\end{center}
+% 	\caption{}%
+% \end{figure}
 
 Поворот радиус-вектора при движении по окружности будет изменяться на \( \Delta
 \varphi \) за время \( \Delta t \). Чтобы указать не только величину этого
@@ -1018,5 +1024,6 @@ $z$, так и радиус-векторам $r_i$. Проекция момен�
 	Если равна нулю сумма проекций внешних сил на некоторое направление, то
 	сохраняется проекция момента импульса системы только на это направление.
 \end{corollary}
+
 
 \end{document}
