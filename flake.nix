@@ -10,7 +10,9 @@
       let
         pkgs = nixpkgs.legacyPackages.${system};
         tex = pkgs.texlive.combine {
-          inherit (pkgs.texlive) scheme-basic latex-bin latexmk scrbook;
+          inherit (pkgs.texlive)
+            scheme-basic latex-bin latexmk babel babel-russian babel-english
+            booktabs etoolbox fontspec koma-script libertine microtype wrapfig pgf;
         };
       in rec {
         packages = {
@@ -24,7 +26,8 @@
               mkdir -p .cache/texmf-var
               env TEXMFHOME=.cache TEXMFVAR=.cache/texmf-var \
                 latexmk -interaction=nonstopmode -pdf -lualatex \
-                main.tex
+                -pretex="\pdfvariable suppressoptionalinfo 512\relax" \
+                -usepretex main.tex
             '';
             installPhase = ''
               mkdir -p $out
