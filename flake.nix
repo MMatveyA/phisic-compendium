@@ -11,9 +11,8 @@
         pkgs = nixpkgs.legacyPackages.${system};
         tex = pkgs.texlive.combine {
           inherit (pkgs.texlive)
-            scheme-basic latex-bin latexmk babel babel-russian babel-english
-            booktabs etoolbox fontspec koma-script libertine microtype wrapfig
-            pgf;
+            scheme-basic latex-bin babel babel-russian babel-english booktabs
+            etoolbox fontspec koma-script libertine microtype wrapfig pgf;
         };
       in rec {
         packages = {
@@ -26,9 +25,7 @@
               export PATH="${pkgs.lib.makeBinPath buildInputs}";
               mkdir -p .cache/texmf-var
               env TEXMFHOME=.cache TEXMFVAR=.cache/texmf-var \
-                latexmk -interaction=nonstopmode -pdf -lualatex \
-                -pretex="\pdfvariable suppressoptionalinfo 512\relax" \
-                -usepretex main.tex
+                lualatex -interaction=nonstopmode main.tex
             '';
             installPhase = ''
               mkdir -p $out
