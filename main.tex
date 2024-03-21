@@ -18,6 +18,7 @@
 \usepackage{microtype}
 
 \usepackage{wrapfig}
+\usepackage{subcaption}
 
 \usepackage{hyperref}
 \hypersetup{
@@ -1412,16 +1413,51 @@ $\Delta l_i$ можно рассчитать следующим образом: 
 	      времени.
 \end{itemize}
 
+\begin{figure}[htpb]
+	\begin{center}
+		\begin{subfigure}{0.45\textwidth}
+			\begin{center}
+				\begin{tikzpicture}[scale=0.5]
+					\draw (0, 0) -- (7, 0) node[below left] {$t$};
+					\draw (0, -2) -- (0, 2) node[below left] {$A$};
+
+					\draw[domain=0:7] plot ({\x}, {sin(deg(\x))});
+				\end{tikzpicture}
+			\end{center}
+			\subcaption{Графический вид}%
+			\label{fig:graph-view}
+		\end{subfigure}
+		\begin{subfigure}{0.45\textwidth}
+			\begin{center}
+				\begin{tikzpicture}[scale=0.5]
+					\newcommand{\ang}{45}
+					\draw(0, 0) -- +(5, 0);
+					\draw[->] (0, 0) -- node[sloped, above] {$\omega$} (\ang:4);
+					\draw (1, 0) arc (0:\ang:1) node[right] {$\varphi$};
+
+					\draw[->] (\ang:1.5) arc (\ang:265:1.5);
+				\end{tikzpicture}
+			\end{center}
+			\subcaption{Векторная вид}%
+			\label{fig:vector-view}
+		\end{subfigure}
+		\caption{Представление колебаний}
+	\end{center}
+\end{figure}
+
+
+
 Гармонические колебания могут быть представлены в одном из трёх видов:
 \begin{itemize}
-	\item графическом;
+	\item графическом (смотреть рисунок~\ref{fig:graph-view});
 	\item аналитическом: \[
 		      x(t) = A \cos(\omega t + \varphi)
 		      ,\] где $\varphi$ --- начальная фаза колебаний, $\omega t + \varphi$
 	      --- фаза колебаний, $A$ --- амплитуда колебаний;
-	\item векторном. В данном представлении вектор вращается вокруг оси со
-	      скоростью $\omega$ проходящей через начало вектора. Этот вид представления
-	      удобно использовать для сложения двух различных колебаний.
+	\item векторном (смотреть рисунок~\ref{fig:vector-view}). В данном
+	      представлении вектор вращается вокруг оси со скоростью $\omega$
+	      проходящей через начало вектора. Этот вид представления удобно
+	      использовать для сложения двух различных колебаний.
 \end{itemize}
 
 \section{Сложение гармонических колебаний}
@@ -1454,7 +1490,7 @@ $\Delta l_i$ можно рассчитать следующим образом: 
 \begin{align*}
 	\omega_1 & = \omega_0 + \Omega \\
 	\omega_2 & = \omega_0 + \Omega \\
-	\omega_0 & >> \Omega           \\
+	\omega_0 & \gg \Omega          \\
 \end{align*}
 
 Для простоты возьмём, что начальная фаза одного из колебаний равна нулю:
